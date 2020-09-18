@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>India Covid-19 Dashboard</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="https://datamaps.github.io/scripts/datamaps.all.min.js"></script>
+    <script src="{% static 'covidindia/coronajavascript.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'covidindia/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+<body>
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded" style="text-align:center; margin:auto;">
+    <h1>India Covid-19 Dashboard</h1>
+    <h3 class="card-subtitle mb-2 text-muted">Updated on: {{ date }} </h3>
+    <h2 class="text-primary"><b>Cases: {{ confirmed_corona_cases }}</b></h2>
+    <h2 class="text-success"><b>Recovered: {{ recovered_corona_cases }}</b></h2>
+    <h2 class="text-warning"><b>Deaths: {{ deaths_corona_cases }}</b></h2>
+    <h2 class="text-danger"><b>Active: {{ active_cases }} </b></h2>
+    <h5>Below chart shows the Daily Trends of our entire Nation along with the interactive Map of our nation.</h5>
+    </div>
+
+
+
+
+
+
+<div class="container-fluid">
+<div class="row">
+<div id="chart" class="col-lg-6 w-100 p-3"></div>
+<div id="india" class="col-lg-6"></div>
+</div>
+</div>
+
+
+<h3 style="text-align:center;">Click on the name of any state to get the Daily Trends on Covid-19 cases in it. </h3>
+<table class="table table-hover table-sm" style="text-align: center;">
+    <tr  class="bg-info">
+        <th>State</th>
+        <th>Confirmed cases</th>
+        <th>Recovered Cases</th>
+	    <th>Active Cases</th>
+	    <th>Deaths</th>
+    </tr>
+
+    <tbody id="myTable">
+
+    </tbody>
+</table>
+<h4 id="clicked-state" style="text-align:center;"></h4>
+<div class="statewisedata" id="statewise-daily-trend"></div>
+</body>
+</html>
