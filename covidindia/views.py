@@ -23,7 +23,9 @@ def indiamap(request):
             'Punjab': 'PB','Rajasthan': 'RJ', 'Sikkim': 'SK', 'Tamil Nadu': 'TN', 'Telengana': 'TS', 'Tripura': 'TR',
             'Uttarakhand': 'UK','Uttar Pradesh': 'UP', 'West Bengal': 'WB'}
     newdict={}
-    data = DailyStateData.objects.all()
+    obj = DailyTotalcases.objects.last()
+    date = obj.date
+    data = DailyStateData.objects.filter(date=date)
     data = [x.serialize() for x in data]
     for i in range(len(data)):
         inside_newdict = {}
@@ -67,8 +69,9 @@ def dailytrend(request,state):
     return JsonResponse(data, safe=False)
 
 def datatable(request):
-    today_date = date.today()
-    data = DailyStateData.objects.filter(date=today_date)
+    obj = DailyTotalcases.objects.last()
+    date = obj.date
+    data = DailyStateData.objects.filter(date=date)
     data = [x.serialize() for x in data]
     return JsonResponse(data, safe=False)
 
@@ -126,7 +129,7 @@ def myApiCall():
         except:
             print("Something went wrong")
 
-    threading.Timer(9000, myApiCall).start() # 9000 secs = 2.5hrs this means this function will be called every 6 hrs
+    threading.Timer(3600, myApiCall).start() # 3600 secs = 1hr this means this function will be called every 1 hr
 
 myApiCall()
 

@@ -21,15 +21,15 @@ is clicked then the end-user will be taken at the bottom of the page where a cha
 Daily Deaths** in that particular state.
 6. I have configured the database in such a way that it will store only 2 months of historical data. Any data older than 2 months will be deleted and
 simultaneously new data will be added everyday incrementally into the database.
-7. My backend function that requests the API, runs automatically every 2.5 hrs therefore in a day the API can be requested 9 times. On any day, if
+7. My backend function that requests the API, runs automatically every 1 hr therefore in a day the API can be requested 24 times. On any day, if
 the database gets updated once or at the time of the first API request then it wont be updated again until the next day. Only if there is any error
 while updating the database the server will log **"Something went wrong"** and will try to update the database during the next API request i.e after
-2.5 Hrs.   
+1 Hr.   
 - **Other existing dashboards did not show **Daily New Cases, Daily Recovered Cases and Daily Deaths** of the whole country and state-wide in one chart 
 and this is what I wanted to achieve with my dashboard. For end-users who would view this dashboard I wanted them to get an idea of the rate at which 
 the number of people getting infected daily and recovering daily.**
 
-###To create this project I used following things:-
+### To create this project I used following things:-
 1. Python Django Framework at the backend server side.
 2. Pure Javascript, HTML, CSS and bootstrap at the frontend and styling.
 3. I used of [Datamaps](https://datamaps.github.io/) library in Javascript for rendering India's map.
